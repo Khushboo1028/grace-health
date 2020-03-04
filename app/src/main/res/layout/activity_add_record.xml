@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Profile.AddRecordActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_cancel_navy_blue"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/back"
+                android:text="Add Medical Record"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/navyBlueText"
+                android:textSize="20dp"
+                android:layout_marginStart="18dp"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/back"
+                android:layout_marginTop="30dp"
+                android:id="@+id/category_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="Select Category"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/taken_dose_text"
+                    />
+
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/taken_dose_text"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:textSize="20dp"
+                    android:editable="false"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="16dp"
+                    android:text="Sick"
+                    android:background="@drawable/timeline_sick_bg"
+                    android:id="@+id/tv_category_spinner"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_dropdown_selector_white"
+                    android:layout_alignEnd="@id/tv_category_spinner"
+                    android:layout_alignBottom="@id/tv_category_spinner"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="16dp"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_layout"
+                android:layout_marginTop="30dp"
+                android:id="@+id/time_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="When did it happen?"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/time_text"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time_text"
+                    android:layout_marginTop="12dp"
+                    android:text="December 12, 2019"
+                    android:minHeight="50dp"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/grey_rectangle_10"
+                    android:id="@+id/tv_time"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/time_layout"
+                android:layout_marginTop="30dp"
+                android:id="@+id/sick_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="What Happened?"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/sick_text"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sick_text"
+                    android:layout_marginTop="12dp"
+                    android:minHeight="50dp"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:nestedScrollingEnabled="true"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/lightGrey_hint"
+                    android:layout_gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:hint="Eg. Cough and Cold, Regular Checkup, etc."
+                    android:background="@drawable/grey_rectangle_10"
+                    android:id="@+id/et_sick"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sick_layout"
+                android:layout_marginTop="30dp"
+                android:id="@+id/doctor_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="Whom did you consult?"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/doctor_text"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/doctor_text"
+                    android:layout_marginTop="12dp"
+                    android:minHeight="50dp"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:nestedScrollingEnabled="true"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/lightGrey_hint"
+                    android:layout_gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:hint="Dr. Sandeep, General Physician"
+                    android:background="@drawable/grey_rectangle_10"
+                    android:id="@+id/et_doctor"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/doctor_layout"
+                android:layout_marginTop="30dp"
+                android:id="@+id/medicine_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="What medicines were prescribed ?"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/medicine_text"
+                    />
+
+<!--                <EditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/medicine_text"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:minHeight="50dp"-->
+<!--                    android:inputType="textCapWords"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:nestedScrollingEnabled="true"-->
+<!--                    android:fontFamily="@font/spd_medium"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textColorHint="@color/lightGrey_hint"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:paddingHorizontal="16dp"-->
+<!--                    android:hint="Dr. Sandeep, General Physician"-->
+<!--                    android:background="@drawable/grey_rectangle_10"-->
+<!--                    android:id="@+id/et_doctor"/>-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_below="@id/medicine_text"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:id="@+id/medicine_recycler_view"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/medicine_layout"
+                android:layout_marginTop="30dp"
+                android:id="@+id/comment_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="Any other comments?"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/comment_text"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/comment_text"
+                    android:layout_marginTop="12dp"
+                    android:gravity="start"
+                    android:minHeight="150dp"
+                    android:inputType="textMultiLine"
+                    android:nestedScrollingEnabled="true"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/lightGrey_hint"
+                    android:padding="16dp"
+                    android:hint="Not allowed to have sweet/cold things."
+                    android:background="@drawable/grey_rectangle_10"
+                    android:id="@+id/et_comments"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/comment_layout"
+                android:layout_marginTop="30dp"
+                android:id="@+id/attachment_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:text="Attachments"
+                    android:layout_marginHorizontal="6dp"
+                    android:id="@+id/attachment_text"
+                    />
+
+<!--                ADD ATTACHMENTS LAYOUT-->
+<!--                IT SHOULD INCLUDE LONG PRESS TO DELETE-->
+<!--                AND CLICK TO VIEW IN BIG VIEW-->
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/attachment_text"
+                    android:layout_marginHorizontal="10dp"
+                    android:id="@+id/linearLayout">
+
+                    <ImageView
+                        android:id="@+id/add_photo"
+                        android:layout_width="60dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_attachments" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/recycler_view_images"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_marginTop="12dp"
+                        android:padding="5dp"
+                        app:reverseLayout="true"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="36dp"
+                android:layout_below="@id/attachment_layout"
+                android:background="@drawable/violet_orange_gradient_rectangle"
+                android:id="@+id/btn_save"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <color name="colorPrimary">#008577</color>-->
+<!--    <color name="colorPrimaryDark">#00574B</color>-->
+<!--    <color name="colorAccent">#D81B60</color>-->
+
+
+    // FOR GRACE
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="navyBlueText">#243557</color>
+    <color name="grey">#707070</color>
+
+
+    <color name="tab_bar_background_grey">#E8E8E8</color>
+
+    <color name="separator_grey">#A5A5A5</color>
+
+    //For you page colors
+    <color name="darkPurple">#25277C</color>
+    <color name="lightPurple">#2D2F89</color>
+    <color name="lightPurpleText">#7B7AA8</color>
+
+    <color name="darkOrange">#F56B3A</color>
+    <color name="lightOrange">#EB6231</color>
+    <color name="lightOrangeText">#EDC9BC</color>
+
+    <color name="darkYellow">#EDA222</color>
+    <color name="lightYellow">#E09720</color>
+    <color name="lightYellowText">#E6D6BA</color>
+
+    <color name="darkBlue">#445DFF</color>
+    <color name="lightBlue">#3A52FB</color>
+    <color name="lightBlueText">#C7C7F2</color>
+
+    <color name="hotpink">#D83059</color>
+    <color name="violet">#8900FF</color>
+    <color name="darkViolet">#450080</color>
+
+    <color name="pink">#ED5370</color>
+
+    <color name="light_green">#00FF89</color>
+
+    //Social Media Page
+    <color name="separatorBlue">#40243557</color>
+
+    //Water Colors
+<!--    <color name="light_layout">#66000000</color>-->
+    <color name="light_blue_box">#27227C</color>
+    <color name="card_seperator">#A5A5A5</color>
+
+    //Reminders
+    <color name="lightGrey_text">#919191</color>
+    <color name="lightGrey_hint">#BABABA</color>
+
+    <color name="login_purple_light">#AF96FD</color>
+    <color name="login_purple_dark">#675DB4</color>
+    
+    <color name="signup_end_color">#F05068</color>
+    <color name="signup_start_color">#801B82</color>
+
+
+    <string-array name="magazine_colors">
+        <item>#243557</item>
+        <item>#8900FF</item>
+        <item>#61B58B</item>
+        <item>#CA7DF9</item>
+        <item>#2081C3</item>
+        <item>#7A6263</item>
+        <item>#A76571</item>
+        <item>#EA8685</item>
+    </string-array>
+
+    <color name="emergencyNumbersStartColor">#DD2476</color>
+    <color name="emergencyNumbersEndColor">#FF512F</color>
+
+    <color name="firstAidStartColor">#EB3348</color>
+    <color name="firstAidEndColor">#F45C43</color>
+
+    <color name="naturalDisasterStartColor">#16BFFD</color>
+    <color name="naturalDisasterEndColor">#CB3066</color>
+
+    <color name="safetyTipsStartColor">#E3758A</color>
+    <color name="safetyTipsEndColor">#C94660</color>
+
+
+
+</resources>

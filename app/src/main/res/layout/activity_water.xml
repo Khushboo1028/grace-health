@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/water_gradient"
+    tools:context=".Water.WaterActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-250dp"
+        android:layout_marginLeft="-300dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/water_text"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="36dp"
+                android:transitionName="@string/transition_water"
+                android:id="@+id/water_text"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/water_text"
+                android:layout_marginTop="16dp"
+                android:id="@+id/water_main_frame">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_minus_water"
+                    android:id="@+id/image_minus_water"/>
+
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:indeterminate="false"
+                    android:layout_gravity="center"
+                    android:progressBackgroundTint="@color/white"
+                    android:max="100"
+                    android:progress="63"
+                    android:progressDrawable="@drawable/circular_progressbar"
+                    android:id="@+id/water_progress_bar"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spd_semibold"
+                    android:textSize="100dp"
+                    android:id="@+id/water_progress"/>
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:src="@drawable/ic_add_water"
+                    android:id="@+id/image_add_water"/>
+
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="of 11 Glasses"
+                android:textSize="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/water_main_frame"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/water_goal"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/water_goal"
+                android:gravity="center"
+                android:id="@+id/units_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/one_glass_eq_text"
+                    android:fontFamily="@font/spd_medium"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/one_glass_eq"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="200 mL"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/glass_value_text"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_water_text"
+                android:textSize="24dp"
+                android:layout_below="@id/units_layout"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/about_water_text"
+                />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/light_blue_box"
+                android:layout_below="@id/about_water_text"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                android:id="@+id/about_water_card">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_water"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spd_medium"
+                    android:background="@android:color/transparent"
+                    android:textSize="16dp"
+                    android:id="@+id/water_detail_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mayo_clinic_text"
+                    android:textColor="@color/darkOrange"
+                    android:textSize="12dp"
+                    android:layout_gravity="bottom"
+                    android:layout_below="@id/water_detail_text"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/reference_link_text"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/options_text"
+                android:textSize="24dp"
+                android:layout_below="@id/about_water_card"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/options_text"
+                />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/light_blue_box"
+                android:layout_below="@id/options_text"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="36dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                android:id="@+id/options_card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/show_all_data_frame">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/show_all_data_text"
+                            android:textSize="18dp"
+                            android:fontFamily="@font/spd_medium"
+                            android:textColor="@color/white"
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right_water"
+                            android:layout_gravity="center_vertical|end" />
+
+                    </FrameLayout>
+
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/card_seperator"/>
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/preferences_frame">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/preferences_text"
+                            android:textSize="18dp"
+                            android:fontFamily="@font/spd_medium"
+                            android:textColor="@color/white"
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right_water"
+                            android:layout_gravity="center_vertical|end"/>
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginVertical="16dp"
+    android:layout_marginHorizontal="16dp">
+
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="10dp"
+    android:layout_marginVertical="12dp"
+    app:cardBackgroundColor="@color/navyBlueText"
+    android:id="@+id/card_view">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/image_news_options"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentStart="true"
+            android:text="Diet monitoring and its benefits."
+            android:fontFamily="@font/spd_semibold"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:id="@+id/topic_name"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topic_name"
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/spd_regular"
+            android:text="Thu, Oct 31, 2019 at 08:49 PM"
+            android:id="@+id/news_date"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_magazine_options"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:id="@+id/image_news_options"/>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_below="@id/news_date"
+            app:cardCornerRadius="10dp"
+            android:id="@+id/news_image_card">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/news_image"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spd_medium"
+        android:textSize="16dp"
+            android:layout_marginTop="6dp"
+        android:layout_below="@id/news_image_card"
+        android:text="Self-monitoring is one of the cornerstones of behavioural health interventions and is fundamentally linked to successful weight loss. There are a lot of different ways to self-monitor. "
+        android:textColor="@color/white"
+        android:id="@+id/news_description"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spd_medium"
+            android:textSize="12dp"
+            android:layout_below="@id/news_description"
+            android:text="...continue reading"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:id="@+id/continue_reading"/>
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+

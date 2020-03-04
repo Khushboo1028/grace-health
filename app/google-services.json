@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "990776581718",
+    "firebase_url": "https://grace-610b3.firebaseio.com",
+    "project_id": "grace-610b3",
+    "storage_bucket": "grace-610b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990776581718:android:7916d56e2db0fe2102e5f7",
+        "android_client_info": {
+          "package_name": "com.replon.www.grace_thehealthapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990776581718-iamj8fjq4gpa2723u2anu0gc1de0fd6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.replon.www.grace_thehealthapp",
+            "certificate_hash": "7de884e06f58f4f461d449e3eb69be78ae354e9f"
+          }
+        },
+        {
+          "client_id": "990776581718-gmbd2uguvfa1rhvdli2qju1lsd5so4kn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPF6offIZbCK0-RvNopC8jDKB4I_XmFp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990776581718-gmbd2uguvfa1rhvdli2qju1lsd5so4kn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

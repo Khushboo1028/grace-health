@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:gravity="center_vertical"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+<!--    <View-->
+<!--        android:layout_width="52dp"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:background="@drawable/first_aid_circle"-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/circle_view"/>-->
+
+    <FrameLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:background="@drawable/first_aid_circle"
+        android:id="@+id/circle_view">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_cancel_white"
+            android:id="@+id/main_img"/>
+
+    </FrameLayout>
+
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_arrow_forward_blue"
+        android:id="@+id/next"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:fontFamily="@font/spd_semibold"
+        android:textColor="@color/navyBlueText"
+        android:layout_marginStart="16dp"
+        android:layout_toLeftOf="@id/next"
+        android:layout_toRightOf="@id/circle_view"
+        android:text="Cardiopulmonary Restitution (CPR)"
+        android:id="@+id/tv_name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:fontFamily="@font/spd_semibold"
+        android:textColor="#B3243557"
+        android:layout_below="@id/tv_name"
+        android:layout_marginStart="16dp"
+        android:layout_toLeftOf="@id/next"
+        android:layout_toRightOf="@id/circle_view"
+        android:text="in Natural Disasters"
+        android:id="@+id/tv_place"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/separator_grey"
+        android:layout_below="@id/circle_view"/>
+
+
+
+</RelativeLayout>

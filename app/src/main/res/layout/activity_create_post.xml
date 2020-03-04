@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SocialMedia.CreatePostActivity">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_cancel_navy_blue"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Post"
+                android:layout_below="@id/back"
+                android:textColor="@color/navyBlueText"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:id="@+id/tv_heading"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check_blue"
+                android:layout_alignParentRight="true"
+                android:padding="5dp"
+                android:layout_below="@id/back"
+                android:id="@+id/image_check"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_heading"
+                android:id="@+id/profile_rel">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_default_profile_image"
+                    android:id="@+id/profile_image"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rahul Gala ➤ "
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/navyBlueText"
+                    android:textSize="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toRightOf="@id/profile_image"
+                    android:id="@+id/tv_name"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_toRightOf="@id/tv_name"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/navyBlueText"
+                    android:id="@+id/spinner_community"/>
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/profile_rel"
+                android:hint="Whats on your mind?"
+                android:paddingVertical="16dp"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:background="@null"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/navyBlueText"
+                android:layout_above="@id/post_image"
+                android:id="@+id/et_content"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="184dp"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/placeholder_create_post_image"
+                    android:id="@+id/post_image"/>
+
+
+
+        </RelativeLayout>
+
+
+    <com.victor.loading.rotate.RotateLoading
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:loading_width="5dp"
+        app:loading_color="@color/navyBlueText"
+        android:layout_centerInParent="true"
+        android:id="@+id/rotateLoading"/>
+
+</RelativeLayout>

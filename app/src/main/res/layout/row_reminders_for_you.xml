@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/violet">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Theraflu MaxGrip"
+        android:textColor="@color/white"
+        android:fontFamily="@font/spd_semibold"
+        android:textSize="16dp"
+        android:id="@+id/pill_name_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pill_name_text"
+        android:fontFamily="@font/spd_semibold"
+        android:textSize="14dp"
+        android:text="2 Pills"
+        android:textColor="@color/white"
+        android:id="@+id/pills_value_text"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
+        android:id="@+id/pill_taken_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/taken_text"
+            android:textColor="@color/white"
+            android:fontFamily="@font/spd_semibold"
+            android:textSize="16dp"
+            android:id="@+id/taken_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pills_taken"
+            android:layout_marginStart="5dp"
+            android:id="@+id/pills_taken"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

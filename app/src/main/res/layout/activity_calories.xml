@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/calories_gradient"
+    tools:context=".Calories.CaloriesActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-100dp"
+        android:layout_marginLeft="-320dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calories_text"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:transitionName="@string/transition_calories"
+                android:id="@+id/tv_heading"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_heading"
+                android:layout_marginTop="16dp"
+                android:id="@+id/rel_show_cal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_calories_back_view"
+                    android:layout_centerInParent="true"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="40dp"
+                    android:textColor="@color/darkOrange"
+                    android:fontFamily="@font/spd_regular"
+                    android:text="11420"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/tv_calories"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="of 67000 Calories"
+                android:textSize="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/rel_show_cal"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/calories_goal"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ Log Meal"
+                android:background="@drawable/btn_gradient_timeline"
+                android:textColor="@color/white"
+                android:minHeight="36dp"
+                android:fontFamily="@font/spd_semibold"
+                android:paddingHorizontal="36dp"
+                android:layout_marginTop="12dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/calories_goal"
+                android:id="@+id/btn_log_meal"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Calories"
+                android:textSize="24dp"
+                android:layout_below="@id/btn_log_meal"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/tv_about"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_about"
+                android:background="@drawable/white_rectangle_10"
+                android:backgroundTint="#66D83059"
+                android:layout_marginTop="12dp"
+                android:padding="16dp"
+                android:id="@+id/about_rel">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_calories"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spd_medium"
+                    android:background="@android:color/transparent"
+                    android:textSize="16dp"
+                    android:id="@+id/tv_detail"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mayo_clinic_text"
+                    android:textColor="@color/darkPurple"
+                    android:textSize="12dp"
+                    android:layout_below="@id/tv_detail"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/reference_link_text"/>
+
+            </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/options_text"
+            android:textSize="24dp"
+            android:layout_below="@id/about_rel"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/spd_semibold"
+            android:textColor="@color/white"
+            android:id="@+id/options_text"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/options_text"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:padding="16dp"
+            android:background="@drawable/white_rectangle_10"
+            android:backgroundTint="#66D83059"
+            android:id="@+id/options_rel">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/show_data_rel">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show All Data"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_show_all_data"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_arrow_right_water"/>
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/separator_grey"
+                android:layout_below="@id/show_data_rel"
+                android:layout_marginVertical="8dp"
+                android:id="@+id/separator_1"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator_1"
+                android:id="@+id/preferences_rel">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferences"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_preferences"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_arrow_right_water"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+            </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

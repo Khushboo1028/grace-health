@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/first_aid_gradient"
+    tools:context=".Emergency.FirstAid">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:id="@+id/mainrel">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Aid"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:transitionName="@string/transition_calories"
+                android:id="@+id/tv_heading"/>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_search_white"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                android:padding="5dp"
+                android:id="@+id/search_img"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_heading"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:id="@+id/layout_top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:background="@drawable/grey_rectangle_ripple_5"
+                    android:id="@+id/layout_what_is_fist_aid">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="What is First Aid?"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/spd_semibold"
+                        android:textColor="@color/firstAidStartColor"
+                        android:layout_marginStart="10dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:background="@drawable/grey_rectangle_ripple_5"
+                    android:id="@+id/layout_why_learn_first_aid">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_target_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Why learn First Aid?"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/spd_semibold"
+                        android:textColor="@color/firstAidStartColor"
+                        android:layout_marginStart="10dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_top"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:background="@drawable/grey_rectangle_ripple_5"
+                android:id="@+id/layout_bottom">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_kit_contents_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Aid Kit Contents"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/spd_semibold"
+                    android:textColor="@color/firstAidStartColor"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_bottom"
+                android:layout_marginTop="36dp"
+                android:text="Emergency Procedures"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:id="@+id/tv_emg_procedures"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_emg_procedures"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/grey_rectangle_10"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="vertical"
+                android:id="@+id/recycler_view"
+                />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/separatorBlue"
+        android:id="@+id/separator"/>
+
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_default_profile_image"
+        android:layout_below="@id/separator"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/users_profile_image"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@id/users_profile_image"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/separator"
+        android:id="@+id/social_name_rel">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navyBlueText"
+        android:text="Swapnil Chauhan"
+        android:fontFamily="@font/spd_semibold"
+        android:textSize="16dp"
+        android:id="@+id/post_name_text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navyBlueText"
+            android:text=" ➤ #Alzheimers"
+            android:fontFamily="@font/spd_semibold"
+            android:textSize="16dp"
+            android:id="@+id/community_name_text"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_social_options"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/separator"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:padding="5dp"
+        android:id="@+id/image_post_options"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/users_profile_image"
+        android:layout_below="@id/social_name_rel"
+        android:layout_marginStart="8dp"
+        android:textSize="12dp"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/spd_regular"
+        android:text="Thu, Oct 31, 2019 at 08:49 PM"
+        android:id="@+id/post_date"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spd_medium"
+        android:layout_below="@id/users_profile_image"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:textColor="@color/black"
+        android:text="All healing is essentially a release from fear.!!!!
+Please get well soon My sons…❤️"
+        android:textSize="16dp"
+        android:id="@+id/post_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/post_text"
+        android:layout_marginTop="12dp"
+        android:id="@+id/image_and_like_rel">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:id="@+id/post_image"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:paddingVertical="5dp"
+            android:gravity="center_vertical"
+            android:id="@+id/like_and_bookmark_rel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_liked"
+            android:padding="3dp"
+            android:layout_marginStart="18dp"
+            android:id="@+id/post_liked"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/spd_medium"
+                android:text="245 likes"
+                android:layout_toRightOf="@id/post_liked"
+                android:layout_marginStart="8dp"
+                android:id="@+id/post_likes_count"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_post_bookmark"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                android:id="@+id/post_bookmark"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

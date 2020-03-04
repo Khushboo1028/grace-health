@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/heartbeat_gradient"
+    tools:context=".HeartBeatActivityNew">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-320dp"
+        android:layout_marginRight="-150dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/heartbeat_text"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:transitionName="@string/transition_heartbeat"
+                android:id="@+id/heartbeat_text"/>
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/heartbeat_text"
+                android:id="@+id/layout">
+
+                <LinearLayout android:id="@+id/top"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView android:id="@+id/text"
+                        android:text="---"
+                        android:textSize="32dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
+                        <com.replon.www.grace_thehealthapp.HeartbeatView
+                            android:id="@+id/image"
+                            android:layout_centerInParent="true"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp">
+
+                        </com.replon.www.grace_thehealthapp.HeartbeatView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

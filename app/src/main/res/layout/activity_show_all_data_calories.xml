@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/calories_gradient"
+    tools:context=".Calories.ShowAllDataCalories">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-100dp"
+        android:layout_marginLeft="-320dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Recorded Data"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:id="@+id/tv_heading"/>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:paddingVertical="10dp"
+                android:layout_below="@id/tv_heading"
+                android:layout_marginTop="24dp"
+                android:id="@+id/barChart"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Activity"
+                android:layout_below="@id/barChart"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="24dp"
+                android:id="@+id/tv_sub_heading"/>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_sub_heading"
+                android:background="@drawable/white_rectangle_10"
+                android:backgroundTint="#66D83059"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:id="@+id/calories_recycler_view"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

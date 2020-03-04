@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Utility.PostWebView">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_bar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:src="@drawable/ic_cancel_navy_blue"
+            android:layout_marginStart="16dp"
+            android:layout_marginVertical="16dp"
+            android:id="@+id/cancel"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_view_in_browser"
+            android:layout_marginEnd="16dp"
+            android:layout_marginVertical="16dp"
+            android:id="@+id/view_in_browser"/>
+    </FrameLayout>
+
+
+    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/webView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_bar"
+        />
+
+
+
+    <com.victor.loading.rotate.RotateLoading
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:loading_width="5dp"
+        app:loading_color="@color/navyBlueText"
+        android:layout_centerInParent="true"
+        android:id="@+id/rotateLoading"/>
+
+</RelativeLayout>

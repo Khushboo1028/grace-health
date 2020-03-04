@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="@color/card_seperator"
+        android:id="@+id/vertical_divider"/>
+
+    <View
+        android:layout_width="150dp"
+        android:layout_height="2dp"
+        android:layout_centerInParent="true"
+        android:background="@color/card_seperator"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingVertical="12dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="36dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/timeline_sick_bg"
+        android:layout_toLeftOf="@id/vertical_divider"
+        android:id="@+id/timeline_rel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_pills"
+            android:id="@+id/img_display_timeline"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_display_timeline"
+            android:text="Check Up"
+            android:layout_centerVertical="true"
+            android:textSize="16dp"
+            android:fontFamily="@font/spd_semibold"
+            android:textColor="@color/white"
+            android:layout_marginStart="12dp"
+            android:id="@+id/tv_timeline_text"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="Mon, Sept 30"
+        android:fontFamily="@font/spd_semibold"
+        android:paddingStart="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/navyBlueText"
+        android:layout_toRightOf="@id/vertical_divider"
+        android:layout_centerVertical="true"
+        android:id="@+id/tv_date"/>
+
+
+
+</RelativeLayout>

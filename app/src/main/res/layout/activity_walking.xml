@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/walking_gradient"
+    tools:context=".Walking.WalkingActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-200dp"
+        android:layout_marginRight="-200dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:layout_marginVertical="16dp"
+            android:id="@+id/mainrel">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/walking_text"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:transitionName="@string/transition_walking"
+                android:id="@+id/walking_text"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daily_average_text"
+                android:layout_below="@id/walking_text"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:id="@+id/daily_average_text"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/daily_average_text"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/daily_data_layout">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/daily_average_text"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_steps_walking"
+                    android:id="@+id/steps_image"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21234"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spd_semibold"
+                    android:textSize="20dp"
+                    android:layout_toRightOf="@id/steps_image"
+                    android:layout_marginStart="4dp"
+                    android:id="@+id/steps_value_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/steps_value_text"
+                    android:text="@string/steps_text"
+                    android:fontFamily="@font/spd_semibold"
+                    android:textSize="14dp"
+                    android:layout_alignRight="@id/steps_value_text"
+                    android:textColor="@color/lightPurpleText"
+                    android:id="@+id/steps_text"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/daily_average_text"
+                android:layout_marginStart="48dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_calories_walking"
+                    android:id="@+id/calories_image"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2019"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spd_semibold"
+                    android:textSize="20dp"
+                    android:layout_toRightOf="@id/calories_image"
+                    android:layout_marginStart="4dp"
+                    android:id="@+id/calories_value_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calories_value_text"
+                    android:text="calories"
+                    android:fontFamily="@font/spd_semibold"
+                    android:textSize="14dp"
+                    android:layout_alignRight="@id/calories_value_text"
+                    android:textColor="@color/lightPurpleText"
+                    android:id="@+id/calories_text"
+                    />
+
+            </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:paddingVertical="10dp"
+                android:layout_below="@id/daily_data_layout"
+                android:layout_marginTop="24dp"
+                android:id="@+id/barChart"
+                />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/barChart"
+                android:layout_marginTop="24dp"
+                android:padding="16dp"
+                android:background="@drawable/white_rectangle_10"
+                android:backgroundTint="#1F000000"
+                android:id="@+id/highest_lowest_rel">
+
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:id="@+id/highest_rel">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_highest_walking"
+                        android:id="@+id/image_highest_walking"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_toRightOf="@id/image_highest_walking"
+                        android:text="Highest -"
+                        android:layout_marginStart="8dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_highest"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_toRightOf="@id/tv_highest"
+                        android:text=""
+                        android:layout_marginStart="8dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_highest_steps"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_toRightOf="@id/tv_highest_steps"
+                        android:text="Steps"
+                        android:layout_marginStart="16dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/lightPurpleText"
+                        android:id="@+id/tv_steps"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_alignParentRight="true"
+                        android:text="11 Mar, 2020"
+                        android:layout_marginStart="16dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_date_highest"/>
+
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separator_grey"
+                    android:layout_below="@id/highest_rel"
+                    android:layout_marginVertical="8dp"
+                    android:id="@+id/separator"/>
+
+
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/separator"
+                    android:id="@+id/lowest_rel">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_lowest_walking"
+                        android:id="@+id/image_lowest_walking"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_toRightOf="@id/image_lowest_walking"
+                        android:text="Lowest -"
+                        android:layout_marginStart="8dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_lowest"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_toRightOf="@id/tv_lowest"
+                        android:layout_marginStart="8dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_lowest_steps"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_toRightOf="@id/tv_lowest_steps"
+                        android:text="Steps"
+                        android:layout_marginStart="16dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/lightPurpleText"
+                        android:id="@+id/tv_steps_1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spd_medium"
+                        android:layout_alignParentRight="true"
+                        android:text="11 Mar, 2020"
+                        android:layout_marginStart="16dp"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_date_lowest"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Walking"
+                android:textSize="24dp"
+                android:layout_below="@id/highest_lowest_rel"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/tv_about"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_about"
+                android:background="@drawable/white_rectangle_10"
+                android:backgroundTint="#1F000000"
+                android:layout_marginTop="12dp"
+                android:padding="16dp"
+                android:id="@+id/about_rel">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about_walking"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/spd_medium"
+                        android:background="@android:color/transparent"
+                        android:textSize="16dp"
+                        android:id="@+id/tv_detail"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mayo_clinic_text"
+                        android:textColor="@color/darkOrange"
+                        android:textSize="12dp"
+                        android:layout_below="@id/tv_detail"
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/reference_link_text"/>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/options_text"
+                android:textSize="24dp"
+                android:layout_below="@id/about_rel"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:id="@+id/options_text"
+                />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/options_text"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:padding="16dp"
+            android:background="@drawable/white_rectangle_10"
+            android:backgroundTint="#1F000000"
+            android:id="@+id/options_rel">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/show_data_rel">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show All Data"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_show_all_data"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_arrow_right_water"/>
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/separator_grey"
+                android:layout_below="@id/show_data_rel"
+                android:layout_marginVertical="8dp"
+                android:id="@+id/separator_1"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator_1"
+                android:id="@+id/preferences_rel">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferences"
+                    android:fontFamily="@font/spd_medium"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_preferences"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_arrow_right_water"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingVertical="4dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:clickable="true"
+        android:background="@drawable/white_rectangle_shadow_10"
+        android:id="@+id/mainrel">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location_pink"
+        android:id="@+id/img_location"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_toRightOf="@id/img_location"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:fontFamily="@font/spd_medium"
+        android:textColor="@color/navyBlueText"
+        android:textSize="16dp"
+        android:id="@+id/place_name"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_directions_red"
+        android:layout_below="@id/place_name"
+        android:layout_marginTop="8dp"
+        android:id="@+id/img_directions"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_toRightOf="@id/img_directions"
+        android:layout_below="@id/place_name"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:fontFamily="@font/spd_medium"
+        android:textColor="#99243557"
+        android:textSize="14dp"
+        android:id="@+id/place_address"/>
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_call_pink"
+        android:id="@+id/image_phone"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

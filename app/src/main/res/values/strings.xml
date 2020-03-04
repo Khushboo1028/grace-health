@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">Grace - The Health App</string>
+
+
+    //TAB BAR
+    <string name="for_you_tab">For You</string>
+    <string name="news_tab">News</string>
+    <string name="first_aid_tab">First Aid</string>
+    <string name="social_tab">Social</string>
+    <string name="nearby_tab">Nearby</string>
+
+    //Transitions
+    <string name="transition_walking">Walking Transition</string>
+    <string name="transition_heartbeat">Heartbeat Transition</string>
+    <string name="transition_water">Water Transition</string>
+    <string name="transition_calories">Calories Transition</string>
+
+
+    //For You Fragments
+    <string name="todays_text">Take a look at your today\'s activities.</string>
+    <string name="walking_text">Walking</string>
+    <string name="steps_text">Steps</string>
+    <string name="walking_target_text">Steps more to achieve the target.</string>
+
+    <string name="heartbeat_text">Heartbeat</string>
+    <string name="bpm_text">BPM</string>
+    <string name="last_checked_text">Last Checked: </string>
+
+    <string name="calories_text">Calories</string>
+    <string name="kcal_text">Calories</string>
+    <string name="calories_target_text">Calories yet to be consumed.</string>
+    <string name="about_calories">Calories are the energy in food. Your body has a constant demand for energy and uses the calories from food to keep functioning. Energy from calories fuels your every action, from fidgeting to marathon running.</string>
+
+    <string name="water_text">Water</string>
+    <string name="glass_text">Glass of</string>
+    <string name="glass_info_text">1 Glass = 200 ml</string>
+
+    <string name="period_text">Period in</string>
+
+    <string name="next_dose_text">Next Dose</string>
+    <string name="taken_text">Taken</string>
+
+
+    //Social Fragments
+    <string name="feed_text">Feed</string>
+    <string name="share_something_text">Share Something...</string>
+
+
+    //Magazine Fragments
+    <string name="magazine_text">Magazine</string>
+
+
+    //Walking Activity
+    <string name="daily_average_text">Daily Average</string>
+    <string name="about_walking">Step count is the number of steps you take throughout the day. Pedometers and digital activity trackers can you help you determine your step count. These devices count steps for any activity that involves step-like movement, including walking, running, stair-climbing, cross-country skiing, and even movement as you go about your daily chores.</string>
+
+
+    //Water Activity
+    <string name="about_water_text">About Water</string>
+    <string name="about_water">For your body to function properly, you must replenish its water supply by consuming beverages and foods that contain water. You may need to modify your total fluid intake depending on how active you are, the climate you live in, your health status, and if you’re pregnant or breast-feeding. Food provides about 20 percent of total water intake. Many fruits and vegetables, such as watermelon and spinach, are 90 percent or more water by weight. </string>
+    <string name="mayo_clinic_text">Mayo Clinic</string>
+    <string name="options_text">Options</string>
+    <string name="show_all_data_text">Show All Data</string>
+    <string name="preferences_text">Preferences</string>
+
+    <string name="all_recorded_data_text">All Recorded Data</string>
+
+    <string name="mayo_clinic_link">https://www.mayoclinic.org</string>
+
+    <string-array name="water_units_array">
+        <item><u>mL</u></item>
+    </string-array>
+
+    <string-array name="timeline_category">
+        <item>Sick</item>
+        <item>Hospital</item>
+        <item>Check Up</item>
+    </string-array>
+
+
+    <string-array name="nearby_places">
+        <item>Hospitals and Clinics</item>
+        <item>Pharmacies</item>
+        <item>Donate Blood</item>
+        <item>Blood Banks</item>
+        <item>NGOs</item>
+        <item>Charity</item>
+    </string-array>
+
+    <array name="nearby_icons">
+        <item>@drawable/ic_hospital_nearby</item>
+        <item>@drawable/ic_pharmacies_nearby</item>
+        <item>@drawable/ic_donate_nearby</item>
+        <item>@drawable/ic_blood_bank_nearby</item>
+        <item>@drawable/ic_ngo_nearby</item>
+        <item>@drawable/ic_charity_nearby</item>
+    </array>
+
+    <string name="your_daily_goal_text">Your daily goal is </string>
+    <string name="glasses_text"> Glasses</string>
+    <string name="one_glass_eq_text">1 Glass = </string>
+    <string name="your_activity">Your Activity</string>
+
+
+    //Reminders Activity
+    <string name="reminders_main_text">Worry Less.\nLive Healthier.</string>
+    <string name="add_dose_text">+ Add Dose</string>
+    <string name="morning_text">Morning</string>
+    <string name="morning_time">6 am - 11 am</string>
+    <string name="afternoon_text">Afternoon</string>
+    <string name="afternoon_time">11 am - 5 pm</string>
+    <string name="evening_text">Evening</string>
+    <string name="evening_time">5 pm - 12 am</string>
+
+    <string name="add_reminders_main_text">Schedule a dose</string>
+    <string name="name_dose_text">Name the dose</string>
+    <string name="time_dose_text">What time in the day do you want to take it?</string>
+    <string name="default_time_dose_text">Morning, 9:42 AM</string>
+    <string name="dose_taken_text">How often is this dose taken?</string>
+    <string name="dose_amount_text">How many pills in this dose?</string>
+
+    <string name="save">Save</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_dose_text">Oh! Happy Day! You have no medicines to take today :)</string>
+
+
+    <string name="BASE_URL">http://grace-env.b3znc92bcp.ap-south-1.elasticbeanstalk.com</string>
+
+    <string name="SharedPref">MyPreferences</string>
+
+    <string name="userTagSP">UserData</string>
+
+
+    <string-array name="communities_list">
+        <item>#NoCommunity</item>
+        <item>#Cancer</item>
+        <item>#Asthma</item>
+        <item>#Obesity</item>
+        <item>#MentalHealth</item>
+        <item>#HeartDisease</item>
+    </string-array>
+
+    <string-array name="community_colors">
+        <item>#8900FF</item>
+        <item>#F56B3A</item>
+        <item>#445DFF</item>
+        <item>#EDA222</item>
+        <item>#D83059</item>
+    </string-array>
+
+    // Error Strings
+    <string name="error_internet">Looks like there is no internet connection. Please turn on your internet connection.</string>
+
+</resources>

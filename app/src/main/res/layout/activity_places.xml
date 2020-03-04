@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Nearby.PlacesActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:id="@+id/mainrel">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back_blue"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nearby Hospitals"
+                android:layout_below="@id/back"
+                android:textColor="@color/navyBlueText"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="24dp"
+                android:id="@+id/tv_heading"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_heading"
+                android:layout_marginTop="24dp"
+                android:paddingHorizontal="8dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="vertical"
+                android:id="@+id/recycler_view_nearby"
+                />
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <com.victor.loading.rotate.RotateLoading
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:loading_width="5dp"
+        app:loading_color="@color/navyBlueText"
+        android:layout_centerInParent="true"
+        android:id="@+id/rotateLoading"/>
+
+</RelativeLayout>

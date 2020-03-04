@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Nearby.NearbyFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:id="@+id/mainrel">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:text="Nearby"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/navyBlueText"
+                android:id="@+id/tv_nearby"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:text="What are you looking for?"
+                android:layout_below="@id/tv_nearby"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/navyBlueText"
+                android:id="@+id/tv_caption"/>
+
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_below="@id/tv_caption"
+                android:columnWidth="180dp"
+                android:numColumns="2"
+                android:layout_marginTop="24dp"
+                android:scrollbarStyle="outsideInset"
+                android:verticalSpacing="16dp"
+                android:stretchMode="spacingWidthUniform"
+                android:textAlignment="center"
+                android:paddingBottom="16dp"
+                android:clipToPadding="false"
+                android:listSelector="@android:color/transparent"
+                android:id="@+id/grid_view"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="15dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="6dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_five_pills"
+                android:id="@+id/pills_number_image"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Theraflu MaxGrip"
+                android:fontFamily="@font/spd_medium"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/pills_number_image"
+                android:layout_marginTop="18dp"
+                android:id="@+id/pill_name"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Pills"
+                android:fontFamily="@font/spd_medium"
+                android:textSize="12dp"
+                android:textColor="@color/grey"
+                android:layout_below="@id/pill_name"
+                android:id="@+id/pill_number"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08:17 AM"
+                android:fontFamily="@font/spd_medium"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/pill_number"
+                android:layout_marginVertical="16dp"
+                android:id="@+id/time_text"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/time_text"
+                android:gravity="center_vertical"
+                android:id="@+id/pill_taken_layout">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_pills_taken"
+                    android:id="@+id/pills_taken_image"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/taken_text"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
+                    android:layout_marginVertical="16dp"
+                    android:id="@+id/pills_taken"/>
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/white_rectangle_10"
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_error"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/dialog_image"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="36dp"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:fontFamily="@font/spd_semibold"
+        android:textColor="@color/separator_grey"
+        android:text="Oh Snap!"
+        android:layout_marginVertical="16dp"
+        android:id="@+id/dialog_title"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:fontFamily="@font/spd_medium"
+        android:textColor="@color/separator_grey"
+        android:text="@string/error_internet"
+        android:id="@+id/dialog_message"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/dialog_message"
+        android:layout_marginTop="32dp"
+        android:weightSum="2">
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_rectangle_10_bottom_left"
+            android:text="Cancel"
+            android:textColor="@color/separator_grey"
+            android:fontFamily="@font/spd_medium"
+            android:textSize="18dp"
+            android:backgroundTint="#f2f2f2"
+            android:layout_weight="1"
+            android:id="@+id/btn_neagtive"/>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_rectangle_10_bottom_right"
+            android:text="DISMISS"
+            android:textColor="@color/white"
+            android:fontFamily="@font/spd_medium"
+            android:textSize="18dp"
+            android:backgroundTint="@color/pink"
+            android:layout_weight="1"
+            android:id="@+id/btn_positive"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

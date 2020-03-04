@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sign_up_gradient"
+    tools:context=".Login.ReadyActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/mainrel">
+
+            <ImageView
+                android:layout_width="172dp"
+                android:layout_height="172dp"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_grace_logo"
+                android:id="@+id/logo_image"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:layout_below="@id/logo_image"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="You are ready to go"
+                android:textSize="32dp"
+                android:id="@+id/tv_ready"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/white"
+                android:layout_below="@id/tv_ready"
+                android:layout_marginTop="14dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Thanks for taking the time to create an account with us. Now this is the fun part, let’s explore the app."
+                android:textSize="24dp"
+                android:id="@+id/tv_thanks"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_medium"
+                android:textSize="16dp"
+                android:background="@drawable/white_rectangle_20"
+                android:backgroundTint="@color/violet"
+                android:textColor="@color/white"
+                android:layout_below="@id/tv_thanks"
+                android:text="Lets go"
+                android:layout_marginTop="36dp"
+                android:id="@+id/btn_lets_go"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

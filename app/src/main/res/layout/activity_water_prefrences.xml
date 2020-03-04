@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/water_gradient"
+    tools:context=".Water.WaterPreferencesActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-250dp"
+        android:layout_marginLeft="-300dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_save_white"
+                android:id="@+id/save"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preferences_text"
+                android:textColor="@color/white"
+                android:layout_below="@id/back"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="36dp"
+                android:transitionName="@string/transition_water"
+                android:id="@+id/water_text"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/water_text"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:id="@+id/goal_layout">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_water_target"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/your_daily_goal_text"
+                    android:fontFamily="@font/spd_medium"
+                    android:id="@+id/your_daily_goal_text"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/spd_medium"
+                    android:id="@+id/water_goal_edittext"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:text="@string/glasses_text"
+                    android:fontFamily="@font/spd_medium"
+                    android:id="@+id/glasses_text"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/goal_layout"
+                android:layout_marginTop="36dp"
+                android:gravity="center_vertical"
+                android:id="@+id/units_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/one_glass_eq_text"
+                    android:fontFamily="@font/spd_medium"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/one_glass_eq"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="200 mL"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/spd_medium"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/glass_value_text"/>
+
+            </LinearLayout>
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/units_layout"
+                android:layout_marginTop="24dp"
+                android:columnWidth="115dp"
+                android:gravity="center"
+                android:numColumns="3"
+                android:stretchMode="spacingWidthUniform"
+                android:textAlignment="center"
+                android:verticalSpacing="16dp"
+                android:id="@+id/water_pref_grid"/>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/for_you_tab"
+        android:icon="@drawable/ic_for_you_tab"
+        android:title="For You" />
+    <item
+        android:id="@+id/social_tab"
+        android:icon="@drawable/ic_social_tab"
+        android:title="Social" />
+
+    <item
+        android:id="@+id/news_tab"
+        android:icon="@drawable/ic_news_tab"
+        android:title="Magazine" />
+    <item
+        android:id="@+id/nearby_tab"
+        android:icon="@drawable/ic_nearby_tab"
+        android:title="Nearby" />
+
+    <item
+        android:id="@+id/emergency_tab"
+        android:icon="@drawable/ic_first_aid_tab"
+        android:title="Emergency" />
+
+</menu>

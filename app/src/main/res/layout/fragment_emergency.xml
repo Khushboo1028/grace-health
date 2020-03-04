@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Emergency.EmergencyFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:id="@+id/mainrel">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:text="Emergency?"
+                android:fontFamily="@font/spd_semibold"
+                android:textColor="@color/navyBlueText"
+                android:id="@+id/tv_emergency"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:text="We're here for you:)"
+                android:layout_below="@id/tv_emergency"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/navyBlueText"
+                android:id="@+id/tv_caption"/>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_search_blue"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="16dp"
+                android:padding="5dp"
+                android:id="@+id/search_img"/>
+
+
+
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="24dp"
+            android:clickable="true"
+            android:layout_below="@+id/tv_caption"
+            android:background="@drawable/grey_rectangle_ripple_10"
+            android:id="@+id/layout_emergency_numbers">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_emergency_numbers"
+                android:id="@+id/emg_num_img"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navyBlueText"
+                android:textSize="20dp"
+                android:fontFamily="@font/spd_medium"
+                android:layout_marginStart="18dp"
+                android:layout_toRightOf="@id/emg_num_img"
+                android:layout_centerVertical="true"
+                android:text="Emergency Numbers"
+                android:id="@+id/emg_num_text"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_forward_blue"
+                android:id="@+id/emg_num_next_img"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="24dp"
+            android:clickable="true"
+            android:layout_below="@+id/layout_emergency_numbers"
+            android:background="@drawable/grey_rectangle_ripple_10"
+            android:id="@+id/layout_first_aid">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_first_aid"
+                android:id="@+id/first_aid_img"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navyBlueText"
+                android:textSize="20dp"
+                android:fontFamily="@font/spd_medium"
+                android:layout_marginStart="18dp"
+                android:layout_toRightOf="@id/first_aid_img"
+                android:layout_centerVertical="true"
+                android:text="First Aid"
+                android:id="@+id/first_aid_text"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_forward_blue"
+                android:id="@+id/first_aid_next_img"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="24dp"
+            android:clickable="true"
+            android:layout_below="@+id/layout_first_aid"
+            android:background="@drawable/grey_rectangle_ripple_10"
+            android:id="@+id/layout_safety_tips">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_safety_tips"
+                android:id="@+id/safety_tips_img"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navyBlueText"
+                android:textSize="20dp"
+                android:fontFamily="@font/spd_medium"
+                android:layout_marginStart="18dp"
+                android:layout_toRightOf="@id/safety_tips_img"
+                android:layout_centerVertical="true"
+                android:text="Safety Tips"
+                android:id="@+id/safety_tips_text"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_forward_blue"
+                android:id="@+id/safety_tips_next_img"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="24dp"
+            android:clickable="true"
+            android:layout_below="@+id/layout_safety_tips"
+            android:background="@drawable/grey_rectangle_ripple_10"
+            android:id="@+id/layout_natural_disasters">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_natural_disasters"
+                android:id="@+id/natural_disasters_img"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navyBlueText"
+                android:textSize="20dp"
+                android:fontFamily="@font/spd_medium"
+                android:layout_marginStart="18dp"
+                android:layout_toRightOf="@id/natural_disasters_img"
+                android:layout_centerVertical="true"
+                android:text="Natural Disasters"
+                android:id="@+id/natural_disasters_text"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_forward_blue"
+                android:id="@+id/natural_disasters_next_img"
+                />
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_natural_disasters"
+            android:src="@drawable/quote_img"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="60dp"
+            android:id="@+id/quote_img"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
