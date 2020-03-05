@@ -119,6 +119,7 @@ public class MagazineAdapter extends RecyclerView.Adapter <MagazineAdapter.ViewH
                     sendIntent.setType("text/plain");
 
                     Intent shareIntent = Intent.createChooser(sendIntent, null);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     activity.getApplicationContext().startActivity(shareIntent);
 
                 }

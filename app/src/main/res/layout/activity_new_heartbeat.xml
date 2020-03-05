@@ -1,10 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/heartbeat_gradient"
     tools:context=".NewHeartbeatActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dots_back"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-320dp"
+        android:layout_marginRight="-150dp"
+        android:scaleType="centerCrop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainrel"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heartbeat"
+                android:layout_below="@id/back"
+                android:textColor="@color/white"
+                android:fontFamily="@font/spd_semibold"
+                android:textSize="30dp"
+                android:transitionName="@string/transition_heartbeat"
+                android:id="@+id/tv_heading"/>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_heading"
+                android:id="@+id/surface_rel">
+
+                <SurfaceView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/surfaceView"/>
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/heartbeat_surface_view"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/surface_rel"
+                android:fontFamily="@font/spd_medium"
+                android:textSize="24dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Please keep your index finger on the camera. Please do not touch the flashlight"
+                android:textColor="@color/white"
+                android:id="@+id/tv_note"/>
+
+
+
+            <TextView
+                android:text="---"
+                android:textSize="32dp"
+                android:layout_below="@id/tv_note"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_countdown">
+            </TextView>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="start"
+                android:fontFamily="@font/spd_medium"
+                android:background="@drawable/white_rectangle_10"
+                android:layout_below="@id/tv_note"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/btn_start"/>
+
+
+
+
+
+            <TextView
+                android:text="---"
+                android:textSize="24dp"
+                android:layout_below="@id/btn_start"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/tv_heartbeat"/>
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:lottie_rawRes="@raw/ecg"
+                android:layout_marginTop="32dp"
+                android:layout_below="@id/tv_note"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                android:visibility="gone"
+                android:id="@+id/ecg_animation"
+                />
+
+            <TextView
+                android:text="---"
+                android:textSize="24dp"
+                android:layout_below="@id/tv_heartbeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/tv_average">
+            </TextView>
+
+            <TextView
+                android:text="---"
+                android:textSize="24dp"
+                android:layout_below="@id/tv_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spd_medium"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/tv_rolling_average">
+            </TextView>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

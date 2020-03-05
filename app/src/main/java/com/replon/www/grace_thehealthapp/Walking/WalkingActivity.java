@@ -267,7 +267,7 @@ public class WalkingActivity extends AppCompatActivity {
                 if (today.equals(res2.getString(0))) {
                     str_date = "Today";
                     calories_burned = res2.getInt(1) * 0.55;
-                    calories_value_text.setText(String.valueOf(calories_burned));
+                    calories_value_text.setText(String.format("%.2f",calories_burned));
                 } else {
                     str_date = res2.getString(0);
                     SimpleDateFormat sfd_viewFormat = new SimpleDateFormat("MMMM d, yyyy");
