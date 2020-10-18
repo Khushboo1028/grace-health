@@ -1,5 +1,6 @@
 package com.replon.www.grace_thehealthapp.Login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -31,6 +32,13 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.replon.www.grace_thehealthapp.MainActivity;
 import com.replon.www.grace_thehealthapp.R;
 import com.replon.www.grace_thehealthapp.Utility.CustomDialog;
@@ -44,6 +52,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -72,6 +81,10 @@ public class DetailsActivity extends AppCompatActivity {
     UserDataStore userDataStore;
 
     private RequestQueue rq;
+
+    FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+    FirebaseFirestore db;
 
 
     @Override
@@ -177,7 +190,8 @@ public class DetailsActivity extends AppCompatActivity {
                 dob = String.valueOf(date.getTimeInMillis());
                 date_created = String.valueOf(Calendar.getInstance().getTimeInMillis());
 //                Log.i(TAG, "DOB IS "+dob+"  GENDER is " + gender + "  CURRENT DATE IS " + date_created);
-                signUp();
+               // signUp();
+                firebaseSignUp();
             }
         });
 
@@ -212,6 +226,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         customDialog = new CustomDialog();
         rq = Volley.newRequestQueue(this);
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
 
 
     }
@@ -370,5 +387,65 @@ public class DetailsActivity extends AppCompatActivity {
                 return Response.error(new ParseError(je));
             }
         }
+    }
+
+    private void firebaseSignUp(){
+        progressBar.setVisibility(View.VISIBLE);
+        btn_continue.setEnabled(false);
+        final HashMap<String, Object> data = new HashMap<>();
+        data.put("email", email);
+        data.put("name",name);
+        data.put("gender",gender);
+        data.put("weight",weight);
+        data.put("height",height);
+        data.put("date_created",date_created);
+        data.put("dob",date.getTime());
+        data.put("deviceType",getDeviceName());
+
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        String userID = mAuth.getCurrentUser().getUid();
+                        DocumentReference docRef = db.collection(getString(R.string.USERS)).document(userID);
+
+                        docRef.set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                finishAffinity();
+                                Intent intent = new Intent(getApplicationContext(),ReadyActivity.class);
+                                startActivity(intent);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressBar.setVisibility(View.GONE);
+                                customDialog.showMessageOneOption(
+                                        "Oh Snap!",
+                                        e.getLocalizedMessage(),
+                                        R.drawable.ic_error,
+                                        R.color.login_purple_light,
+                                        "Dismiss",
+                                        DetailsActivity.this);
+                                btn_continue.setEnabled(true);
+                            }
+                        });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressBar.setVisibility(View.GONE);
+                        btn_continue.setEnabled(true);
+                        customDialog.showMessageOneOption(
+
+                                "Oh Snap!",
+                                e.getLocalizedMessage(),
+                                R.drawable.ic_error,
+                                R.color.login_purple_light,
+                                "Dismiss",
+                                DetailsActivity.this);
+                    }
+                });
     }
 }

@@ -9,6 +9,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.replon.www.grace_thehealthapp.MainActivity;
 import com.replon.www.grace_thehealthapp.R;
 import com.replon.www.grace_thehealthapp.Utility.DefaultTextConfig;
@@ -16,6 +19,7 @@ import com.replon.www.grace_thehealthapp.Utility.DefaultTextConfig;
 public class ReadyActivity extends AppCompatActivity {
 
     Button btn_lets_go;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

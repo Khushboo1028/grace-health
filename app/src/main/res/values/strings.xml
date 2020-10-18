@@ -153,4 +153,14 @@
     // Error Strings
     <string name="error_internet">Looks like there is no internet connection. Please turn on your internet connection.</string>
 
+    //FIREBASE STRINGS
+    <string name="USERS">Users</string>
+    <string name="POSTS">Posts</string>
+    <string name="COMMUNITY_NAME">community_name</string>
+    <string name="CONTENT">content</string>
+    <string name="IMAGE_URL">image_url</string>
+    <string name="DATE_CREATED">date_created</string>
+    <string name="USER_ID">user_id</string>
+    <string name="NAME">name</string>
+
 </resources>

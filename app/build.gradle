@@ -1,21 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def googleMapApiKey = properties.getProperty('google.map.key')
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//def googleMapApiKey = properties.getProperty('google.map.key')
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.replon.www.grace_thehealthapp"
-        minSdkVersion 24
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 4
+        versionName "1.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        resValue "string", "googleMapApiKey", googleMapApiKey
+        resValue "string", "googleMapApiKey", "AIzaSyAl_W-16U6yJI1RLf0gZdDd_IHoXFNi6L0"
     }
     buildTypes {
         release {
@@ -70,4 +70,6 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.google.firebase:firebase-firestore:21.7.0'
 }

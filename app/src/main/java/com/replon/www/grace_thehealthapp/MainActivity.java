@@ -17,6 +17,8 @@ import android.util.Log;
 
 import com.bigscreen.iconictabbar.view.IconicTab;
 import com.bigscreen.iconictabbar.view.IconicTabBar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.replon.www.grace_thehealthapp.Emergency.EmergencyFragment;
 import com.replon.www.grace_thehealthapp.ForYou.ForYouFragment;
 import com.replon.www.grace_thehealthapp.Login.LoginActivity;
@@ -56,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     SharedPreferences preferences;
     Fragment target;
     private int target_Steps = 6000;
+
+    FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+
 
 
     @Override
@@ -306,26 +312,39 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void checkCurrentUser(){
 
-        JSONObject userJSON = userDataStore.readUserData();
-        String auth_token;
+//        JSONObject userJSON = userDataStore.readUserData();
+//        String auth_token;
+//
+//        try{
+//            if (userJSON!=null){
+//                auth_token = userJSON.getString("auth_token");
+//                if (auth_token.equals("null") || auth_token.equals("")){
+//                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                    startActivity(intent);
+//                }else{
+//                    Log.i(TAG,"AUTH TOKEN IS "+ auth_token);
+//                }
+//            }else {
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(intent);
+//            }
+//
+//        }catch (JSONException e){
+//            e.printStackTrace();
+//        }
 
-        try{
-            if (userJSON!=null){
-                auth_token = userJSON.getString("auth_token");
-                if (auth_token.equals("null") || auth_token.equals("")){
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                }else{
-                    Log.i(TAG,"AUTH TOKEN IS "+ auth_token);
-                }
-            }else {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
+        //Firebase Login Code
 
-        }catch (JSONException e){
-            e.printStackTrace();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+
+        if(firebaseUser!=null){
+            Log.i(TAG,"AUTH FIREBASE TOKEN IS "+ firebaseUser.getUid());
+        }else{
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
         }
+
 
 
     }

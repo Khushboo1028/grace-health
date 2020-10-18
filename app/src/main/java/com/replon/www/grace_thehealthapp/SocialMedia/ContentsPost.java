@@ -9,7 +9,7 @@ public class ContentsPost {
     String content;
     int likes_count;
     String image_url;
-    JSONArray likes_uid;
+//    JSONArray likes_uid;
     String uid;
     String date_created;
     String community_name ;
@@ -17,12 +17,12 @@ public class ContentsPost {
     String name;
     Boolean liked_boolean;
 
-    public ContentsPost(String pid, String content, int likes_count, String image_url, JSONArray likes_uid, String uid, String date_created, String community_name, String profile_image_url, String name, Boolean liked_boolean) {
+    public ContentsPost(String pid, String content, int likes_count, String image_url, String uid, String date_created, String community_name, String profile_image_url, String name, Boolean liked_boolean) {
         this.pid = pid;
         this.content = content;
         this.likes_count = likes_count;
         this.image_url = image_url;
-        this.likes_uid = likes_uid;
+//        this.likes_uid = likes_uid;
         this.uid = uid;
         this.date_created = date_created;
         this.community_name = community_name;
@@ -62,14 +62,14 @@ public class ContentsPost {
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
-
-    public JSONArray getLikes_uid() {
-        return likes_uid;
-    }
-
-    public void setLikes_uid(JSONArray likes_uid) {
-        this.likes_uid = likes_uid;
-    }
+//
+//    public JSONArray getLikes_uid() {
+//        return likes_uid;
+//    }
+//
+//    public void setLikes_uid(JSONArray likes_uid) {
+//        this.likes_uid = likes_uid;
+//    }
 
     public String getUid() {
         return uid;

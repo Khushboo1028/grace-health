@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,7 +36,19 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -51,6 +64,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -71,6 +85,7 @@ public class CreatePostActivity extends AppCompatActivity {
     Uri postImageUri;
 
     Spinner spinner_community;
+    TextView tv_name;
 
     UserDataStore userDataStore;
     String[] communitiesList;
@@ -88,6 +103,10 @@ public class CreatePostActivity extends AppCompatActivity {
 
     RotateLoading rotateLoading;
     Bitmap bitmapImage;
+    FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+    FirebaseFirestore db;
+    ListenerRegistration listenerRegistration;
 
 
 
@@ -181,6 +200,22 @@ public class CreatePostActivity extends AppCompatActivity {
         spinner_community.setAdapter(dataAdapter);
 
 
+        //get Name
+        listenerRegistration = db.collection(getString(R.string.USERS)).document(firebaseUser.getUid())
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                        if(error!=null){
+                            Log.e(TAG,"Error",error);
+                        }else{
+                            if( snapshot!=null && snapshot.exists()){
+                               if(snapshot.getString(getString(R.string.NAME))!=null){
+                                   tv_name.setText(snapshot.getString(getString(R.string.NAME)) + " ➤ ");
+                                }
+                            }
+                        }
+                    }
+                });
     }
 
 
@@ -192,6 +227,7 @@ public class CreatePostActivity extends AppCompatActivity {
         create_post.setImageAlpha(80);
         post_image = (ImageView) findViewById(R.id.post_image);
 
+        tv_name = (TextView) findViewById(R.id.tv_name);
         et_content = (EditText) findViewById(R.id.et_content);
 
         spinner_community = (Spinner) findViewById(R.id.spinner_community);
@@ -208,11 +244,15 @@ public class CreatePostActivity extends AppCompatActivity {
         //firebase
         firebaseStorage=FirebaseStorage.getInstance();
         storageReference=firebaseStorage.getReference();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
 
 
         rq = Volley.newRequestQueue(CreatePostActivity.this);
 
     }
+
 
 
     @Override
@@ -320,75 +360,112 @@ public class CreatePostActivity extends AppCompatActivity {
     }
     private void createPost(){
 
+
         create_post.setEnabled(false);
         rotateLoading.start();
         String url = getString(R.string.BASE_URL) + "/post";
 
-        JSONObject paramJson = new JSONObject();
+        DocumentReference docRef = db.collection(getString(R.string.POSTS)).document();
 
-        try {
-            paramJson.put("content", et_content.getText().toString().trim());
-            paramJson.put("community_name", spinner_community.getSelectedItem());
-            if(downloadUrl!=null){
-                paramJson.put("image_url", downloadUrl);
+        HashMap<String, Object> data = new HashMap<>();
+        data.put(getString(R.string.CONTENT),et_content.getText().toString().trim());
+        data.put(getString(R.string.COMMUNITY_NAME),spinner_community.getSelectedItem());
+        data.put(getString(R.string.DATE_CREATED), new Timestamp(new Date()));
+        data.put(getString(R.string.USER_ID), firebaseUser.getUid());
 
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if(downloadUrl!=null){
+                data.put(getString(R.string.IMAGE_URL), downloadUrl);
         }
 
-        JSONObject userJSON = userDataStore.readUserData();
-
-        if (userJSON!=null) {
-            if (!userJSON.has("auth_token")) {
-                customDialog.showMessageOneOption(
+        docRef.set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        rotateLoading.stop();
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        rotateLoading.stop();
+                        create_post.setEnabled(true);
+                        customDialog.showMessageOneOption(
                         "Oh Snap!",
-                        "You need to login to see your feed",
+                        e.getLocalizedMessage(),
                         R.color.pink,
                         R.drawable.ic_error,
                         "Dismiss",
                         CreatePostActivity.this);
-            } else {
-
-                try {
-                    auth_token = userJSON.getString("auth_token");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, paramJson, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        setResult(Activity.RESULT_OK);
-                        finish();
-
                     }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        rotateLoading.stop();
-                        create_post.setEnabled(true);
-                        Log.i(TAG,"SOME ERROR: " + error.getMessage());
-                    }
-                })
-                {
-                    @Override
-                    public Map getHeaders() throws AuthFailureError {
-                        HashMap headers = new HashMap();
-                        headers.put("Content-Type", "application/json");
-                        headers.put("x-auth", auth_token);
-                        return headers;
-                    }
-                };
-
-                rq.add(jsonObjectRequest);
+                });
 
 
+//        JSONObject paramJson = new JSONObject();
+//
+//        try {
+//            paramJson.put("content", et_content.getText().toString().trim());
+//            paramJson.put("community_name", spinner_community.getSelectedItem());
+//            if(downloadUrl!=null){
+//                paramJson.put("image_url", downloadUrl);
+//
+//            }
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
-            }
-        }
+//        JSONObject userJSON = userDataStore.readUserData();
+
+//        if (userJSON!=null) {
+//            if (!userJSON.has("auth_token")) {
+//                customDialog.showMessageOneOption(
+//                        "Oh Snap!",
+//                        "You need to login to see your feed",
+//                        R.color.pink,
+//                        R.drawable.ic_error,
+//                        "Dismiss",
+//                        CreatePostActivity.this);
+//            } else {
+//
+//                try {
+//                    auth_token = userJSON.getString("auth_token");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, paramJson, new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        setResult(Activity.RESULT_OK);
+//                        finish();
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        error.printStackTrace();
+//                        rotateLoading.stop();
+//                        create_post.setEnabled(true);
+//                        Log.i(TAG,"SOME ERROR: " + error.getMessage());
+//                    }
+//                })
+//                {
+//                    @Override
+//                    public Map getHeaders() throws AuthFailureError {
+//                        HashMap headers = new HashMap();
+//                        headers.put("Content-Type", "application/json");
+//                        headers.put("x-auth", auth_token);
+//                        return headers;
+//                    }
+//                };
+//
+//                rq.add(jsonObjectRequest);
+
+
+
+//            }
+//        }
 
 
     }
@@ -399,5 +476,13 @@ public class CreatePostActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(listenerRegistration!=null){
+            listenerRegistration=null;
+        }
     }
 }

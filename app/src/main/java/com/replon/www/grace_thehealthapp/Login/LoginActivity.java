@@ -1,5 +1,6 @@
 package com.replon.www.grace_thehealthapp.Login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -35,6 +36,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.replon.www.grace_thehealthapp.R;
 import com.replon.www.grace_thehealthapp.Utility.CustomDialog;
 import com.replon.www.grace_thehealthapp.Utility.DefaultTextConfig;
@@ -70,6 +77,10 @@ public class LoginActivity extends AppCompatActivity {
     CustomDialog customDialog;
 
     UserDataStore userDataStore;
+    FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+    FirebaseFirestore db;
+
 
 
     @Override
@@ -182,6 +193,10 @@ public class LoginActivity extends AppCompatActivity {
 
         userDataStore = new UserDataStore(LoginActivity.this);
 
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
 
     }
 
@@ -189,83 +204,83 @@ public class LoginActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        JSONObject paramJson = new JSONObject();
-
-        try {
-            paramJson.put("email", email);
-            paramJson.put("password", password);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-        String url = getString(R.string.BASE_URL)+"/login";
-
-        final JsonRequest request = new JsonRequest(Request.Method.POST, url, paramJson, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-
-                    progressBar.setVisibility(View.GONE);
-
-                    JSONObject data = response.getJSONObject("data");
-                    JSONObject headers = response.getJSONObject("headers");
-
-
-                    userDataStore.storeUserData(data);
-                    JSONObject userJSON = userDataStore.readUserData();
-
-                    try{
-                        if (userJSON.getString("auth_token")!=null){
-                            finish();
-                        }
-                    }catch (JSONException e){
-                        e.printStackTrace();
-                    }
+//        JSONObject paramJson = new JSONObject();
+//
+//        try {
+//            paramJson.put("email", email);
+//            paramJson.put("password", password);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
 
 
+//        String url = getString(R.string.BASE_URL)+"/login";
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.i(TAG,"Error is " + e.getMessage());
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.GONE);
-
-                JSONObject data = null;
-
-                try {
-                    String responseBody = new String(error.networkResponse.data, "utf-8");
-                    data = new JSONObject(responseBody);
-                    String message = data.optString("error");
-                    Log.i(TAG,"SOME ERROR "+message);
-                    customDialog.showMessageOneOption(
-                            "Oh Snap!",
-                            message,
-                            R.drawable.ic_error,
-                            R.color.login_purple_light,
-                            "Dismiss",
-                            LoginActivity.this);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-
-        })
+//        final JsonRequest request = new JsonRequest(Request.Method.POST, url, paramJson, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//
+//                try {
+//
+//                    progressBar.setVisibility(View.GONE);
+//
+//                    JSONObject data = response.getJSONObject("data");
+//                    JSONObject headers = response.getJSONObject("headers");
+//
+//
+//                    userDataStore.storeUserData(data);
+//                    JSONObject userJSON = userDataStore.readUserData();
+//
+//                    try{
+//                        if (userJSON.getString("auth_token")!=null){
+//                            finish();
+//                        }
+//                    }catch (JSONException e){
+//                        e.printStackTrace();
+//                    }
+//
+//
+//
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Log.i(TAG,"Error is " + e.getMessage());
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                progressBar.setVisibility(View.GONE);
+//
+//                JSONObject data = null;
+//
+//                try {
+//                    String responseBody = new String(error.networkResponse.data, "utf-8");
+//                    data = new JSONObject(responseBody);
+//                    String message = data.optString("error");
+//                    Log.i(TAG,"SOME ERROR "+message);
+//                    customDialog.showMessageOneOption(
+//                            "Oh Snap!",
+//                            message,
+//                            R.drawable.ic_error,
+//                            R.color.login_purple_light,
+//                            "Dismiss",
+//                            LoginActivity.this);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//
+//
+//        })
         // OVERRIDE METHODS
-        {
+//        {
 
 //            @Override
 //            public Map getHeaders() throws AuthFailureError {
@@ -274,9 +289,35 @@ public class LoginActivity extends AppCompatActivity {
 //                headers.put("x-auth", xauth_try);
 //                return headers;
 //            }
-        };
+//        };
 
-        rq.add(request);
+//        rq.add(request);
+
+        //FIREBASE LOGIN CODE
+        mAuth.signInWithEmailAndPassword(email,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Log.i(TAG,"User logged in successfully");
+                        progressBar.setVisibility(View.GONE);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i(TAG,"User login Error occurred" + e.getLocalizedMessage());
+                        customDialog.showMessageOneOption(
+                            "Oh Snap!",
+                            e.getLocalizedMessage(),
+                            R.drawable.ic_error,
+                            R.color.login_purple_light,
+                            "Dismiss",
+                            LoginActivity.this);
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+
 
     }
 
@@ -332,18 +373,18 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        JSONObject userJSON = userDataStore.readUserData();
-        if (userJSON!=null){
-            if (userJSON.has("auth_token")){
-                try{
-                    if (!userJSON.getString("auth_token").equals("")){
-                        finish();
-                    }
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+//        JSONObject userJSON = userDataStore.readUserData();
+//        if (userJSON!=null){
+//            if (userJSON.has("auth_token")){
+//                try{
+//                    if (!userJSON.getString("auth_token").equals("")){
+//                        finish();
+//                    }
+//                }catch (JSONException e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
 
     }
 }

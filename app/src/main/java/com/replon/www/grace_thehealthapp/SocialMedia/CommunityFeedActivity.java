@@ -206,7 +206,7 @@ public class CommunityFeedActivity extends AppCompatActivity {
 
                                 Log.i(TAG,"POST CONTENT "+ content);
 
-                                postList.add(new ContentsPost(pid,content,likes_count,image_url,likes_uid,uid,date_created,community_id,profile_image_url,name,false));
+//                                postList.add(new ContentsPost(pid,content,likes_count,image_url,likes_uid,uid,date_created,community_id,profile_image_url,name,false));
 
                             }
 

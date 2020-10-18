@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.replon.www.grace_thehealthapp.R;
 import com.replon.www.grace_thehealthapp.Utility.CustomDialog;
 import com.replon.www.grace_thehealthapp.Utility.DefaultTextConfig;
@@ -25,6 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText et_name, et_email, et_password, et_confirm_password;
 
     CustomDialog customDialog;
+
 
 
 

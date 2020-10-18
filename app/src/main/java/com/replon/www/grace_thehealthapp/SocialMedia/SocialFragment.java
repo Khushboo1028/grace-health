@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.replon.www.grace_thehealthapp.R;
 import com.replon.www.grace_thehealthapp.Utility.CustomDialog;
 import com.replon.www.grace_thehealthapp.Utility.DefaultTextConfig;
@@ -36,7 +50,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,7 +91,9 @@ public class SocialFragment extends Fragment {
     ImageView image_community;
 
     private RequestQueue rq;
+    ListenerRegistration listenerRegistration;
 
+    String name = "";
 
     public SocialFragment() {
         // Required empty public constructor
@@ -94,79 +113,24 @@ public class SocialFragment extends Fragment {
 
 
 
-//        postList.add(new ContentsPost("Swapnil Chauhan",
-//                "",
-//                "69",
-//                "All healing is essentially a release from fear.!!!! \nPlease get well soon My sons…❤️",
-//                "Thu, Oct 31, 2019 at 08:49 PM",
-//                true,
-//                true,
-//                "",
-//                "https://firebasestorage.googleapis.com/v0/b/replontest.appspot.com/o/profile_images%2FAA18F79B-EA2A-4C0E-B813-7944B1BF4EB3.jpg?alt=media&token=4d5483b4-74d7-45c4-9191-427b046c2130"));
-//
-//        postList.add(new ContentsPost("Rahul Gala",
-//                "#Alzheimers",
-//                "0",
-//                "All healing is essentially a release from fear.!!!! \nPlease get well soon My sons…❤️",
-//                "Thu, Oct 31, 2019 at 08:49 PM",
-//                false,
-//                false,
-//                "https://firebasestorage.googleapis.com/v0/b/replontest.appspot.com/o/notices_files%2F0f8f0d05-29b3-4dd8-a573-944499cce182?alt=media&token=946ce120-6580-49de-b750-766a44f42e88",
-//                ""));
-//        postList.add(new ContentsPost("Rahul Gala",
-//                "#Alzheimers",
-//                "0",
-//                "All healing is essentially a release from fear.!!!! \nPlease get well soon My sons…❤️",
-//                "Thu, Oct 31, 2019 at 08:49 PM",
-//                false,
-//                false,
-//                "",
-//                ""));
-//        postList.add(new ContentsPost("Rahul Gala",
-//                "#Alzheimers",
-//                "0",
-//                "All healing is essentially a release from fear.!!!! \nPlease get well soon My sons…❤️",
-//                "Thu, Oct 31, 2019 at 08:49 PM",
-//                false,
-//                false,
-//                "",
-//                ""));
-//        postList.add(new ContentsPost("Rahul Gala",
-//                "#Alzheimers",
-//                "0",
-//                "All healing is essentially a release from fear.!!!! \nPlease get well soon My sons…❤😇️",
-//                "Thu, Oct 31, 2019 at 08:49 PM",
-//                false,
-//                false,
-//                "",
-//                ""));
-//        postList.add(new ContentsPost("Rahul Gala",
-//                "#Alzheimers",
-//                "0",
-//                "All healing is essentially a release from fear.!!!! \nPlease get well soon My sons…❤️",
-//                "Thu, Oct 31, 2019 at 08:49 PM",
-//                false,
-//                false,
-//                "",
-//                ""));
 
         mAdapter = new PostsAdapter(getActivity(),postList);
         recyclerView.setAdapter(mAdapter);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getPosts();
-            }
-        });
-
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(true);
-                getPosts();
-            }
-        });
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                getPosts();
+//            }
+//        });
+//
+//        swipeRefreshLayout.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                swipeRefreshLayout.setRefreshing(true);
+//                getPosts();
+//            }
+//        });
 
         share_something_rel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,6 +151,7 @@ public class SocialFragment extends Fragment {
         });
 
 
+        getFirebasePosts();
 
         return view;
     }
@@ -269,7 +234,7 @@ public class SocialFragment extends Fragment {
 
                                     Log.i(TAG,"POST CONTENT "+ content);
 
-                                    postList.add(new ContentsPost(pid,content,likes_count,image_url,likes_uid,uid,date_created,community_id,profile_image_url,name,false));
+//                                    postList.add(new ContentsPost(pid,content,likes_count,image_url,likes_uid,uid,date_created,community_id,profile_image_url,name,false));
 
                                 }
 
@@ -312,11 +277,90 @@ public class SocialFragment extends Fragment {
 
     }
 
+    private void getFirebasePosts(){
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        //get Name
+       listenerRegistration = db.collection(getString(R.string.USERS)).document(firebaseUser.getUid())
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                        if(error!=null){
+                            Log.e(TAG,"Error",error);
+                        }else{
+                            if( snapshot!=null && snapshot.exists()){
+                                name = checkForNull(snapshot.getString(getString(R.string.NAME)));
+                            }
+                        }
+                    }
+                });
+
+
+        listenerRegistration = db.collection(getString(R.string.POSTS))
+                .orderBy(getString(R.string.DATE_CREATED), Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+                if(e!=null){
+                    Log.i(TAG,"Error: "+e);
+                }else{
+
+                    postList.clear();
+                    for (QueryDocumentSnapshot doc : snapshot) {
+                       String uid = checkForNull(doc.getString(getString(R.string.USER_ID)));
+                       String community_name = checkForNull(doc.getString(getString(R.string.COMMUNITY_NAME)));
+                       String profile_image_url = "";
+                        String date_created="";
+                       if(doc.getTimestamp(getString(R.string.DATE_CREATED))!=null){
+                           Timestamp timestamp = (Timestamp) doc.getData().get(getString(R.string.DATE_CREATED));
+                           Date date = timestamp.toDate();;
+                           SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM dd, yyyy hh:mm aa");
+                           date_created = dateFormat.format(date);
+                       }
+
+
+
+                        postList.add(new ContentsPost(
+                                doc.getId(),
+                                checkForNull(doc.getString(getString(R.string.CONTENT))),
+                                0,
+                                checkForNull(doc.getString(getString(R.string.IMAGE_URL))),
+                                uid,
+                                date_created,
+                                community_name,
+                                "",
+                                name,
+                                false
+                                ));
+                    }
+
+                    mAdapter.notifyDataSetChanged();
+                    rotateLoading.stop();
+                    swipeRefreshLayout.setRefreshing(false);
+
+
+                }
+            }
+        });
+
+
+    }
+
+    private String checkForNull(String data){
+        if(data==null){
+            data = "";
+
+        }
+        return data;
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==CREATEPOST && resultCode==RESULT_OK){
-            getPosts();
+//            getPosts();
         }
     }
 
@@ -332,5 +376,13 @@ public class SocialFragment extends Fragment {
         super.onResume();
         recyclerView.setLayoutFrozen(false);
         Log.i(TAG,"In On RESUME");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(listenerRegistration!=null){
+            listenerRegistration = null;
+        }
     }
 }

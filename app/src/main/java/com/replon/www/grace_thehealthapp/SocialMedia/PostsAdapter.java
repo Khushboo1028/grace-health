@@ -75,7 +75,7 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
         holder.post_text.setText(contentsPost.getContent());
         holder.post_community.setText(" ➤ "+ contentsPost.getCommunity_name());
 
-        holder.post_date.setText(setDateFormat(contentsPost.getDate_created()));
+        holder.post_date.setText(contentsPost.getDate_created());
         if(contentsPost.getProfile_image_url().equals("")){
             holder.post_profile_image.setImageResource(R.drawable.ic_default_profile_image);
         }else{
@@ -91,39 +91,39 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
         JSONObject userJSON = userDataStore.readUserData();
         String uid = "";
 
-        if (!userJSON.has("uid")){
-            customDialog.showMessageOneOption(
-                    "Oh Snap!",
-                    "You need to login to see likes",
-                    R.color.pink,
-                    R.drawable.ic_error,
-                    "Dismiss",
-                    activity);
-        }else{
-
-            int j=0;
-
-
-
-            for (j=0;j<contentsPost.getLikes_uid().length();j++){
-                try {
-                    if (contentsPost.getLikes_uid().toString().contains(userJSON.getString("uid")))
-                    {
-                        holder.liked_image.setImageResource(R.drawable.ic_liked);
-                        contentsPost.setLiked_boolean(true);
-                    }
-                    else {
-                        holder.liked_image.setImageResource(R.drawable.ic_not_liked);
-                        contentsPost.setLiked_boolean(false);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (j==0){
-                holder.liked_image.setImageResource(R.drawable.ic_not_liked);
-            }
-        }
+//        if (!userJSON.has("uid")){
+//            customDialog.showMessageOneOption(
+//                    "Oh Snap!",
+//                    "You need to login to see likes",
+//                    R.color.pink,
+//                    R.drawable.ic_error,
+//                    "Dismiss",
+//                    activity);
+//        }else{
+//
+//            int j=0;
+//
+//
+//
+////            for (j=0;j<contentsPost.getLikes_uid().length();j++){
+////                try {
+////                    if (contentsPost.getLikes_uid().toString().contains(userJSON.getString("uid")))
+////                    {
+////                        holder.liked_image.setImageResource(R.drawable.ic_liked);
+////                        contentsPost.setLiked_boolean(true);
+////                    }
+////                    else {
+////                        holder.liked_image.setImageResource(R.drawable.ic_not_liked);
+////                        contentsPost.setLiked_boolean(false);
+////                    }
+////                } catch (JSONException e) {
+////                    e.printStackTrace();
+////                }
+////            }
+//            if (j==0){
+//                holder.liked_image.setImageResource(R.drawable.ic_not_liked);
+//            }
+//        }
 
 
 
@@ -132,7 +132,7 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
             @Override
             public void onClick(View v) {
                 if (!contentsPost.getLiked_boolean()){
-                    holder.post_likes_count.setText(contentsPost.getLikes_uid().length()+1 + " likes");
+//                    holder.post_likes_count.setText(contentsPost.getLikes_uid().length()+1 + " likes");
                     holder.liked_image.setImageResource(R.drawable.ic_liked);
                     contentsPost.setLiked_boolean(true);
                     likePost(contentsPost.getPid());
@@ -141,7 +141,7 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
             }
         });
 
-        holder.post_likes_count.setText(contentsPost.getLikes_uid().length() + " likes");
+//        holder.post_likes_count.setText(contentsPost.getLikes_uid().length() + " likes");
 
         holder.options_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,20 +218,20 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
     }
 
 
-    private String setDateFormat(String date){
-        long dateMills = Long.parseLong(date);
-
-        // Creating date format
-        DateFormat simple = new SimpleDateFormat("EEE, MMM dd, yyyy hh:mm aa");
-
-        // Creating date from milliseconds
-        // using Date() constructor
-        Date result = new Date(dateMills);
-
-        // Formatting Date according to the
-        // given format
-        return simple.format(result);
-    }
+//    private String setDateFormat(String date){
+//        long dateMills = Long.parseLong(date);
+//
+//        // Creating date format
+//        DateFormat simple = new SimpleDateFormat("EEE, MMM dd, yyyy hh:mm aa");
+//
+//        // Creating date from milliseconds
+//        // using Date() constructor
+//        Date result = new Date(dateMills);
+//
+//        // Formatting Date according to the
+//        // given format
+//        return simple.format(result);
+//    }
 
 
     public void showReport() {

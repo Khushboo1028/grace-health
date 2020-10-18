@@ -1,12 +1,15 @@
 package com.replon.www.grace_thehealthapp.ForYou;
 
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +22,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.github.siyamed.shapeimageview.CircularImageView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.replon.www.grace_thehealthapp.Calories.CaloriesActivity;
 import com.replon.www.grace_thehealthapp.Calories.DatabaseHelperCalories;
 import com.replon.www.grace_thehealthapp.HeartbeatActivity;
@@ -92,7 +102,9 @@ public class ForYouFragment extends Fragment {
 
     UserDataStore userDataStore;
     private int target_steps = 6000, steps_more_to_walk;
+    ListenerRegistration listenerRegistration;
 
+    Activity mActivity;
     public ForYouFragment() {
         // Required empty public constructor
     }
@@ -262,6 +274,7 @@ public class ForYouFragment extends Fragment {
         tv_calories.setText(String.valueOf(calories_consumed));
         tv_calories_target.setText(String.valueOf(calories_yet_to_be_consumed) +" "+ getString(R.string.calories_target_text));
 
+        mActivity = getActivity();
 
 
 
@@ -460,41 +473,61 @@ public class ForYouFragment extends Fragment {
 
     private void updateUIForValues(){
 
-        JSONObject userJSON = userDataStore.readUserData();
+//        JSONObject userJSON = userDataStore.readUserData();
+//
+//        try{
+//            if (userJSON!=null){
+//
+//                if (userJSON.has("profile_image_url")){
+//                    profile_image_url = userJSON.getString("profile_image_url");
+//                    if ( profile_image_url != null && !profile_image_url.equals("null") && !profile_image_url.equals("")){
+//                        Glide.with(getActivity()).load(profile_image_url).placeholder(R.drawable.ic_default_profile_image).into(img_profile);
+//                    }
+//                }
+//
+//                if (userJSON.has("name")){
+//                    name = userJSON.getString("name");
+//                    name_text.setText(capitalize(name));
+//                }
+//
+//                if (userJSON.has("gender")){
+//                    gender = userJSON.getString("gender");
+//                    if(gender.equalsIgnoreCase("male")){
+//                        period_layout.setVisibility(View.GONE);
+//                    }else {
+//                        period_layout.setVisibility(View.GONE);
+//                    }
+//                }
+//
+//
+//            }
+//
+//
+//        }catch (JSONException e){
+//            e.printStackTrace();
+//        }
 
-        try{
-            if (userJSON!=null){
-
-                if (userJSON.has("profile_image_url")){
-                    profile_image_url = userJSON.getString("profile_image_url");
-                    if ( profile_image_url != null && !profile_image_url.equals("null") && !profile_image_url.equals("")){
-                        Glide.with(getActivity()).load(profile_image_url).placeholder(R.drawable.ic_default_profile_image).into(img_profile);
-                    }
-                }
-
-                if (userJSON.has("name")){
-                    name = userJSON.getString("name");
-                    name_text.setText(capitalize(name));
-                }
-
-                if (userJSON.has("gender")){
-                    gender = userJSON.getString("gender");
-                    if(gender.equalsIgnoreCase("male")){
-                        period_layout.setVisibility(View.GONE);
-                    }else {
-                        period_layout.setVisibility(View.GONE);
-                    }
-                }
-
-
-            }
-
-
-        }catch (JSONException e){
-            e.printStackTrace();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        period_layout.setVisibility(View.GONE);
+        if(firebaseUser!=null){
+            listenerRegistration = db.collection(mActivity.getString(R.string.USERS)).document(firebaseUser.getUid())
+                    .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+                            if(e!=null){
+                                Log.i(TAG,"Error: "+e);
+                            }else{
+                               if(snapshot.getString("name")!=null){
+                                   name_text.setText(capitalize(snapshot.getString("name")));
+                               }
+                            }
+                        }
+                    });
         }
 
     }
+
 
     private void viewCalorieData() {
         Date date = Calendar.getInstance().getTime();
@@ -568,6 +601,13 @@ public class ForYouFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(listenerRegistration!=null){
+            listenerRegistration = null;
+        }
+    }
 
     private void logout(){
         userDataStore.deleteUserData();
